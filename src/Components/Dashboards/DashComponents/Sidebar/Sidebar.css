@@ -14,12 +14,13 @@
   .title {
     font-size: 3rem;
     display: grid;
-    place-items: center;
+    place-items: initial;
+    margin-left: 10px;
   }
   
   /* Sidebar */
   .sidebar {
-    background: rgb(0, 7, 61);
+    background: #191970;
     color: white;
     height: 100vh;
     overflow-y: auto;
@@ -106,4 +107,8 @@
   .menu_container .link {
     padding-left: 20px;
     border-bottom: #fff 0.5px solid;
+  }
+  .btn-primary{
+    background-color: #191970 !important;
+    border: #191970;
   }

@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { BiAnalyse, BiSearch } from "react-icons/bi";
+import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser, FaStickyNote } from "react-icons/fa";
+import { BiAnalyse, BiSearch, BiMessageSquareError } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { AiFillHeart, AiTwotoneFileExclamation } from "react-icons/ai";
 import { BsCartCheck } from "react-icons/bs";
@@ -15,14 +14,14 @@ const routes = [
     icon: <FaHome />,
   },
   {
-    path: "/users",
-    name: "Users",
-    icon: <FaUser />,
+    path: "/studentdashboard/leaveapplication",
+    name: "Leave Application",
+    icon: <FaStickyNote />,
   },
   {
     path: "/messages",
     name: "Messages",
-    icon: <MdMessage />,
+    icon: <BiMessageSquareError />,
   },
   {
     path: "/analytics",
@@ -132,8 +131,6 @@ const SidebarMain = ({ children }) => {
 
             transition: {
               duration: 0.5,
-              type: "spring",
-              damping: 10,
             },
           }}
           className={`sidebar `}
@@ -148,7 +145,7 @@ const SidebarMain = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  DoSomeCoding
+                  Hostel
                 </motion.h1>
               )}
             </AnimatePresence>
