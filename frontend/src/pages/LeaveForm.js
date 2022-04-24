@@ -1,16 +1,31 @@
 import React from 'react';
 import "../Assets/Styles/LeaveForm.css";
+import "../Assets/Styles/NavPages.css"
 
 
 const LeaveForm = () => {
   return (
-      <div class="d-flex align-items-center light-blue-gradient" style={{height: "100vh"}}>
+      <div class="d-flex align-items-center light-blue-gradient" style={{height: "150vh"}}>
         <div class="container" >
           <div class="d-flex justify-content-center">
             <div class="col-md-25">
               <div class="card rounded-0 shadow">
                 <div class="card-body">
-                  <h3>Long Leave</h3>
+                <div class="row">
+                    <div class="col"><h3>Leave Form</h3></div>
+                    <div class="col">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Leave Type</label>
+                      </div>
+                      <select class="custom-select" id="inputGroupSelect01">
+                        <option value="1">Long Leave</option>
+                        <option value="2">Short Leave</option>
+                      </select>
+                    </div>
+                    </div>
+                  </div>
+                  <hr />
                   <form>
                     <div class="row">
                       <div class="col">
