@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "../Assets/Styles/LeaveForm.css";
 import "../Assets/Styles/NavPages.css"
 
@@ -11,20 +11,7 @@ const LeaveForm = () => {
             <div class="col-md-25">
               <div class="card rounded-0 shadow">
                 <div class="card-body">
-                <div class="row">
                     <div class="col"><h3>Leave Form</h3></div>
-                    <div class="col">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Leave Type</label>
-                      </div>
-                      <select class="custom-select" id="inputGroupSelect01">
-                        <option value="1">Long Leave</option>
-                        <option value="2">Short Leave</option>
-                      </select>
-                    </div>
-                    </div>
-                  </div>
                   <hr />
                   <form>
                     <div class="row">
@@ -60,7 +47,7 @@ const LeaveForm = () => {
                     <div class="row">
                       <div class="col my-2 ">
                         <label for="exampleInputEmail1"> Depature Date: </label>
-                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter depature date" />
+                        <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter depature date"/>
                       </div>
                       <div class="col my-2">
                         <label for="exampleInputEmail1">Arrival Date: </label>
@@ -80,11 +67,11 @@ const LeaveForm = () => {
                       </div>
                       <div class="col my-2">
                         <label for="exampleInputEmail1">Leaving on: </label>
-                        <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter depature date & time" />
+                        <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter depature date & time" />
                       </div>
                       <div class="col my-2">
                         <label for="exampleInputEmail1">Back on: </label>
-                        <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter arrival date & time" />
+                        <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter arrival date & time" />
                       </div>
                     </div>
                     <div class="row">
