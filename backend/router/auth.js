@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt'); //encryption library
 //importing models
 const Student = require('../model/studentSchema');
 const Warden = require('../model/wardenSchema');
-const Admin = require('../model/adminSchema')
+const Admin = require('../model/adminSchema');
+const LeaveForm = require('../model/leaveformSchema');
 
 const router = express.Router(); //for routing purposes
 
@@ -143,6 +144,33 @@ router.post('/login', async (req,res) =>{
     }catch(err){
         console.log(err)
     }
+})
+
+
+
+router.post('/student/leaveform', async (req,res) => {
+
+    const { email, appdate, depdatetime, arrdatetime, reason, destination, cpersonName, cpersonRelation, cpersonPhone} = req.body
+    if(!email || !appdate || !depdatetime || !arrdatetime || !reason || !destination || !cpersonName || !cpersonRelation || !cpersonPhone){
+        return res.status(422).json({error: 'Please fill in all the required fields.'})
+    }
+
+    if(! await Student.findOne({email})){
+        return res.status(422).json({ error: "This email doesn't exist."})
+    }
+
+    const leaveform = new LeaveForm({ email, appdate, depdatetime, arrdatetime, reason, destination, cperson:{name:cpersonName, relation:cpersonRelation, phone:cpersonPhone}})
+    
+    try{
+
+        if(await leaveform.save()){
+            res.status(201).json({ message: "Leave Form submitted successfuly!" })
+        }
+
+    }catch(err){
+        console.log(err)
+    }
+
 })
 
 
