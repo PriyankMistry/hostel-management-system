@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
-import Studenthome from './pages/Studenthome';
+import Student from './pages/Student';
 import LeaveForm from './pages/LeaveForm';
 import Complaints from './pages/Complaints';
 import Attendance  from './pages/Attendance';
 import PageCTA from './pages/PageCTA';
-import Header from './Components/Navbar/Header';
 import Adminhome from './pages/Adminhome';
 import Studentregister from "./pages/Studentregister"
 
@@ -15,16 +14,23 @@ export default function App() {
 
   return (
     <BrowserRouter>
-    <Header/>
         <Routes>
           <Route exact path="/" element={<Login/>}/>
-          <Route exact path="/student" element={<Studenthome/>}/>
-          <Route path="/student/leaveform" element={<LeaveForm/>}/>
-          <Route path="/student/Complaints" element={<Complaints/>}/>
-          <Route path="/student/Attendance" element={<Attendance/>}/>
-          <Route path="/student/pagecta" element={<PageCTA/>}/>
-          <Route exact path="/admin" element={<Adminhome/>}/>
-          <Route path="/admin/studentregister" element={<Studentregister/>}/>
+          <Route exact path="student" element={<Student/>}>
+            <Route path="leaveform" element={<LeaveForm/>}/>
+            <Route path="Complaints" element={<Complaints/>}/>
+            <Route path="Attendance" element={<Attendance/>}/>
+          </Route>
+          {/* <Route exact path="warden" element={<Studenthome/>}>
+            <Route path="leaveform" element={<LeaveForm/>}/>
+            <Route path="Complaints" element={<Complaints/>}/>
+            <Route path="Attendance" element={<Attendance/>}/>
+          </Route>
+          <Route exact path="admin" element={<Studenthome/>}>
+            <Route path="leaveform" element={<LeaveForm/>}/>
+            <Route path="Complaints" element={<Complaints/>}/>
+          </Route> */}
+          <Route path="/" element={<PageCTA/>}/>
         </Routes>
     </BrowserRouter>
   )

@@ -44,6 +44,16 @@ const studentSchema = new mongoose.Schema({
         required:true
     },
 
+    course:{
+        type:String,
+        required:true
+    },
+
+    quota:{
+        type:String,
+        required:true
+    },
+
     role:{
         type:String,
         required:true

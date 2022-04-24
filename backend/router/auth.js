@@ -63,11 +63,11 @@ router.post('/register/warden', async(req,res) =>{
 
 router.post('/register/student', async(req,res) =>{
 
-    const {name, email, phone, password, cpassword, rollno, room, block} = req.body;
+    const {name, email, phone, password, cpassword, rollno, room, block, course, quota} = req.body;
     let hashedpwd; //scope of the let variable is in the whole scope (router.post('./register',....))
     
     //checking if all values are filled
-    if(!name || !email || !phone || !password || !cpassword || !rollno || !room || !block){
+    if(!name || !email || !phone || !password || !cpassword || !rollno || !room || !block || !course || !quota){
         return res.status(422).json({error: 'Please fill in all the required fields.'})
     }
 
@@ -93,7 +93,7 @@ router.post('/register/student', async(req,res) =>{
         }
 
         //creating instance(document) of the collection
-        const user = new Student({ name, email, phone, password:hashedpwd, cpassword:hashedpwd, rollno, room, block, role:'student'});  //{schemaEmail:userEmail}
+        const user = new Student({ name, email, phone, password:hashedpwd, cpassword:hashedpwd, rollno, room, block, course, quota, role:'student'});  //{schemaEmail:userEmail}
         try{
             const userRegister = await user.save();
             if(userRegister) {
@@ -131,7 +131,8 @@ router.post('/login', async (req,res) =>{
 
         try{
             if(await bcrypt.compare(password, userLogin.password)){
-                res.status(201).json({message:"Log in Successful.", role: userLogin.role})
+                console.log(userLogin)
+                res.status(201).json({role: userLogin.role})
             }
             else{
                 res.json({error: 'Enter correct credentials!'})
