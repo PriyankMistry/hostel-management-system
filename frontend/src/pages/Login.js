@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 export default function Login() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,18 +25,11 @@ export default function Login() {
       password: data.get('password'),
     });
   };
+  
   const stylelogo = {
     width: "100%",
     marginBottom: 20,
     borderRadius: 7
-  }
-  const stylecover1 = {
-    width: "100%",
-    height: "auto",
-    display: "inline-flex",
-    position: "absolute",
-    zIndex: -1,
-    overflowX: "none",   
   }
   const fontstyle = {
     fontWeight: 600,
