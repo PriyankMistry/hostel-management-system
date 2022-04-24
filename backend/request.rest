@@ -1,0 +1,30 @@
+GET http://localhost:5000/users
+
+####
+
+POST http://localhost:5000/register/student
+Content-Type: application/json
+
+{"name": "Preet", "email": "preet@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "rollno":"19BCP098","room":613, "block":"B"}
+
+####
+
+POST http://localhost:5000/register/warden
+Content-Type: application/json
+
+{"name": "Preet", "email": "preet@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "block":"B"}
+
+####
+
+POST http://localhost:5000/register/student
+Content-Type: application/json
+
+{"name": "Preet", "email": "admin@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "rollno":"19bcp096", "room":614, "block":"B"}
+
+####
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{   "email":"admin@gmail.com",
+    "password":"admin123"
+}
