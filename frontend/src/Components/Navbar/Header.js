@@ -5,7 +5,7 @@ import classes from "../../Assets/Styles/Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 
-const Header = () => {
+const Header = (props) => {
 
     // if((window.location.href).charAt(window.location.href.length -1)=='/'){
     //     isHeader=true
@@ -47,8 +47,8 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <div className={classes.header__content}>
-                <Link to="/student" className={classes.header__content__logo}>
-                    Student Dashboard
+                <Link to={props.titlelink} className={classes.header__content__logo}>
+                   {props.Headericon}   {props.Headertitle} 
                 </Link>
                 <nav
                     className={`${classes.header__content__nav} ${
@@ -57,18 +57,18 @@ const Header = () => {
                 >
                     <ul>
                         <li>
-                            <Link to="/student/leaveform" onClick={menuToggleHandler}>
-                                Leave Application
+                            <Link to={props.content1link} onClick={menuToggleHandler}>
+                                {props.content1}
                             </Link>
                         </li>
                         <li>
-                            <Link to="/student/Complaints" onClick={menuToggleHandler}>
-                                Complaints
+                            <Link to={props.content2link} onClick={menuToggleHandler}>
+                                {props.content2}
                             </Link>
                         </li>
                         <li>
-                            <Link to="/student/Attendance" onClick={menuToggleHandler}>
-                                Attendance
+                            <Link to={props.content3link} onClick={menuToggleHandler}>
+                                {props.content3}
                             </Link>
                         </li>
                     </ul>
