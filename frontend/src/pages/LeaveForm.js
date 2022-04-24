@@ -4,7 +4,7 @@ import "../Assets/Styles/LeaveForm.css";
 
 const LeaveForm = () => {
   return (
-      <div class="d-flex align-items-center light-blue-gradient" style={{height: "100vh"}}>
+      <div class="d-flex align-items-center light-blue-gradient" style={{height: "150vh"}}>
         <div class="container" >
           <div class="d-flex justify-content-center">
             <div class="col-md-25">

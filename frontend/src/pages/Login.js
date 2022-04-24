@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import highrise3 from '../Assets/Images/highrise3.jpg';
 import pdeulogo from '../Assets/Images/pdeulogo.jpg';
 import Button from '@mui/material/Button';
@@ -17,15 +18,35 @@ const theme = createTheme();
 
 export default function Login() {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+
+  const navigate = useNavigate();
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+    const i = await fetch('http://localhost:5000/login', 
+    {method: "POST",
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      email,
+      password
+    })
+  })
+
+  const res = await i.json()  //.json() is an async operation
+
+  if(i.status === 201){
+    navigate(`/${res.role}`)
+  }
+  else{
+    alert(res.error)
+  }
+
   };
-  
+
   const stylelogo = {
     width: "100%",
     marginBottom: 20,
@@ -72,7 +93,7 @@ export default function Login() {
             <Typography style={fontstyle}>
               Highrise Hostel Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={onLogin} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -82,6 +103,7 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={e => setEmail(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -92,13 +114,14 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={e => setPassword(e.target.value)}
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={handleSubmit}
+                onClick={onLogin}
               >
                 Sign In
               </Button>
