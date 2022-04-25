@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import "../Assets/Styles/LeaveForm.css";
 import "../Assets/Styles/NavPages.css"
 
@@ -51,7 +50,7 @@ const LeaveForm = () => {
                       </div>
                       <div class="col my-2">
                         <label for="exampleInputEmail1">Arrival Date: </label>
-                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter arrival date" />
+                        <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter arrival date" />
                       </div>
                       <div class="col my-2">
                         <label for="exampleInputEmail1">Reason: </label>

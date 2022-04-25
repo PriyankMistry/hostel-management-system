@@ -5,11 +5,12 @@ import Student from './pages/Student';
 import LeaveForm from './pages/LeaveForm';
 import Complaints from './pages/Complaints';
 import Attendance  from './pages/Attendance';
-import PageCTA from './pages/PageCTA';
 import Admin from './pages/Admin';
 import Studentregister from "./pages/Studentregister"
 import Wardenregister from './pages/Wardenregister';
 import Warden from './pages/Warden';
+import Leaveapplications from './pages/Leaveapplications';
+import Leavereview from './pages/Leavereview';
 
 
 export default function App() {
@@ -24,7 +25,8 @@ export default function App() {
             <Route path="attendance" element={<Attendance/>}/>
           </Route>
           <Route exact path="warden" element={<Warden/>}>
-            <Route path="leaveform" element={<LeaveForm/>}/>
+            <Route path="leaveapplications" element={<Leaveapplications/>}/>
+            <Route path="leaveapplications/leavereview" element={<Leavereview/>}/>
             <Route path="Complaints" element={<Complaints/>}/>
             <Route path="Attendance" element={<Attendance/>}/>
           </Route>
@@ -32,7 +34,6 @@ export default function App() {
             <Route path="studentregister" element={<Studentregister/>}/>
             <Route path="wardenregister" element={<Wardenregister/>}/>
           </Route>
-          <Route path="/" element={<PageCTA/>}/>
         </Routes>
     </BrowserRouter>
   )
