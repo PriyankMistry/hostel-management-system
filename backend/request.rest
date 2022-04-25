@@ -1,25 +1,18 @@
-GET http://localhost:5000/users
+GET http://localhost:5000/yo
 
 ####
 
-POST http://localhost:5000/register/student
+POST http://localhost:5000/admin/student
 Content-Type: application/json
 
-{"name": "Preet", "email": "preet@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "rollno":"19BCP098","room":613, "block":"B"}
+{"name": "Preet", "email": "preet@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "rollno":"19BCP098","room":613, "block":"B", "course":"btech", "quota":"dasa"}
 
 ####
 
-POST http://localhost:5000/register/warden
+POST http://localhost:5000/admin/warden
 Content-Type: application/json
 
-{"name": "Preet", "email": "preet@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "block":"B"}
-
-####
-
-POST http://localhost:5000/register/student
-Content-Type: application/json
-
-{"name": "Preet", "email": "preetstudent@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "rollno":"19bcp096", "room":614, "course":"computer", "quota":"dasa", "block":"B"}
+{"name": "warden", "email": "warden@gmail.com", "phone": 1234567890, "password":"qwerty123", "cpassword":"qwerty123", "block":"B"}
 
 ####
 POST http://localhost:5000/login
@@ -34,5 +27,5 @@ POST http://localhost:5000/student/leaveform
 Content-Type: application/json
 
 {
-    "email":"preetstudent@gmail.com", "appdate":"2001-07-25", "depdatetime":"2001-07-25", "arrdatetime":"2001-07-26", "reason":"homevisit", "destination":"goa", "cpersonName":"jesus", "cpersonRelation":"hangman", "cpersonPhone":9000123920
+    "email":"preetstudent@gmail.com", "appdate":"2001-07-25", "depdate":"2001-07-25", "deptime":"7:00", "arrdate":"2001-07-26", "arrtime":"21:00", "reason":"homevisit", "destination":"vadodara", "cpersonName":"jesus", "cpersonRelation":"hangman", "cpersonPhone":9000123920
 }
