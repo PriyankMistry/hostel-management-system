@@ -13,7 +13,10 @@ require('./database/connection'); //server to database connection
 
 app.use(express.json()) //to make our app parse the data in json  
 app.use(cors()) //to relax the security so that requests can be made
-app.use(require('./router/auth')) 
+
+app.use('/', require('./router/auth')) 
+app.use('/admin', require('./router/adminRouter'))
+app.use('/student', require('./router/studentRouter'))
 
 
 app.listen(PORT , () => console.log(`server running on ${PORT}`))

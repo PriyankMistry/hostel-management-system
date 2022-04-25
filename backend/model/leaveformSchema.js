@@ -11,13 +11,23 @@ const leaveformSchema = mongoose.Schema({
         required:true
     },
 
-    depdatetime:{
+    depdate:{
         type:Date,
         required:true
     },
 
-    arrdatetime:{
+    deptime:{
+        type:String,
+        required:true
+    },
+
+    arrdate:{
         type:Date,
+        required:true
+    },
+
+    arrtime:{
+        type:String,
         required:true
     },
 
@@ -47,7 +57,11 @@ const leaveformSchema = mongoose.Schema({
                 required:true
             }
 
-        }
+        },
+    type: {
+        type:String,
+        required:true
+    }
     }
 )
 
