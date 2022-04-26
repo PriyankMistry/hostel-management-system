@@ -10,7 +10,7 @@ router.post('/leaveform', async (req,res) => {
 
     let type=''
 
-    const { email, appdate, depdate, deptime, arrdate, arrtime, reason, destination, cpersonName, cpersonRelation, cpersonPhone} = req.body
+    const {_id, email, appdate, depdate, deptime, arrdate, arrtime, reason, destination, cpersonName, cpersonRelation, cpersonPhone} = req.body
     // if(!email || !appdate || !depdate || !arrdate || !deptime || !arrtime || !reason || !destination || !cpersonName || !cpersonRelation || !cpersonPhone){
     //     return res.status(422).json({error: 'Please fill in all the required fields.'})
     // }
@@ -33,7 +33,8 @@ router.post('/leaveform', async (req,res) => {
     else{
         type = 'Short Leave'
     }
-    const leaveform = new LeaveForm({ email, appdate, depdate, deptime, arrdate, arrtime, reason, destination, cperson:{name:cpersonName, relation:cpersonRelation, phone:cpersonPhone}, type})
+    const leaveform = new LeaveForm({
+        email, appdate, depdate, deptime, arrdate, arrtime, reason, destination, cperson:{name:cpersonName, relation:cpersonRelation, phone:cpersonPhone}, type})
     
     try{
 
