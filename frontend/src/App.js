@@ -13,6 +13,7 @@ import Leaveapplications from './pages/Leaveapplications';
 import Leavereview from './pages/Leavereview';
 import Welcomewarden from './pages/Welcomewarden';
 import Welcomestudent from './pages/Welcomestudent';
+import Error from './pages/Error';
 
 
 export default function App() {
@@ -23,7 +24,7 @@ export default function App() {
         {!localStorage.getItem('email') && 
         (<Route path="/" element={<Login/>}/>)} 
         
-        {localStorage &&
+        {(localStorage.role === 'student') &&
         ( 
           <>
             <Route path="/student" element={<Student/>}>
@@ -32,6 +33,12 @@ export default function App() {
               <Route path="complaints" element={<Complaints/>}/>
               <Route path="attendance" element={<Attendance/>}/>
             </Route>
+          </>
+        )}
+
+        {(localStorage.role === 'warden') &&
+        ( 
+          <>
             <Route path="warden" element={<Warden/>}>
               <Route path="" element={<Welcomewarden/>}/>
               <Route path="leaveapplications" element={<Leaveapplications/>}/>
@@ -39,12 +46,22 @@ export default function App() {
               <Route path="Complaints" element={<Complaints/>}/>
               <Route path="Attendance" element={<Attendance/>}/>
             </Route>
+            </>
+        )}
+
+        {(localStorage.role === 'admin') &&
+        ( 
+          <>
             <Route path="admin" element={<Admin/>}>
               <Route path="studentregister" element={<Studentregister/>}/>
               <Route path="wardenregister" element={<Wardenregister/>}/>
             </Route>
-        </>
+          </>
         )}
+
+        <Route path='*' element={<Error/>}/>
+
+
       </Routes>
 
       </>

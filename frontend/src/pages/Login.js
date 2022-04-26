@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../Assets/Styles/Login.css'
 import pdeulogo from '../Assets/Images/pdeulogo.jpg';
@@ -7,6 +7,7 @@ import pdeulogo from '../Assets/Images/pdeulogo.jpg';
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+
 
     const navigate = useNavigate();
 
@@ -27,8 +28,9 @@ export default function Login() {
 
     if(i.status === 201){
         localStorage.setItem("email",res.userEmail);
+        localStorage.setItem("role",res.role);
         navigate(`/${res.role}`) //try to send email from localstorage as a prop in navigate
-        
+        window.location.reload();
     }
     else{
         alert(res.error)
