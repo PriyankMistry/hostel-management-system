@@ -7,9 +7,6 @@ import { FaSignOutAlt } from "react-icons/fa";
 
 const Header = (props) => {
 
-    // if((window.location.href).charAt(window.location.href.length -1)=='/'){
-    //     isHeader=true
-    // }
     const navigate = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
     const [size, setSize] = useState({
@@ -30,7 +27,7 @@ const Header = (props) => {
     }, []);
 
     useEffect(() => {
-        if (size.width > 768 && menuOpen) {
+        if (size.width > 963 && menuOpen) {
             setMenuOpen(false);
         }
     }, [size.width, menuOpen]);
@@ -52,7 +49,7 @@ const Header = (props) => {
                 </Link>
                 <nav
                     className={`${classes.header__content__nav} ${
-                        menuOpen && size.width < 768 ? classes.isMenu : ""
+                        menuOpen && size.width < 963 ? classes.isMenu : ""
                     }`}
                 >
                     <ul>
@@ -67,9 +64,12 @@ const Header = (props) => {
                             </Link>
                         </li>
                         <li>
+                        {props.content3 === "" ? null : (
                             <Link to={props.content3link} onClick={menuToggleHandler}>
                                 {props.content3}
                             </Link>
+
+                        )}
                         </li>
                     </ul>
                     <button onClick={LogoutClickHandler}><FaSignOutAlt/> Logout</button>

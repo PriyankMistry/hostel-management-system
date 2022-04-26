@@ -24,7 +24,7 @@ export default function App() {
             <Route path="complaints" element={<Complaints/>}/>
             <Route path="attendance" element={<Attendance/>}/>
           </Route>
-          <Route exact path="warden" element={<Warden/>}>
+          <Route exact path="warden/" element={<Warden/>}>
             <Route path="leaveapplications" element={<Leaveapplications/>}/>
             <Route path="leaveapplications/leavereview" element={<Leavereview/>}/>
             <Route path="Complaints" element={<Complaints/>}/>
