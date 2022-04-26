@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Student from './pages/Student';
@@ -15,6 +15,7 @@ import Leavereview from './pages/Leavereview';
 
 export default function App() {
 
+
   return (
     <BrowserRouter>
         <Routes>
@@ -26,7 +27,7 @@ export default function App() {
           </Route>
           <Route exact path="warden/" element={<Warden/>}>
             <Route path="leaveapplications" element={<Leaveapplications/>}/>
-            <Route path="leaveapplications/leavereview" element={<Leavereview/>}/>
+            <Route path="leaveapplications/:name" element={<Leavereview/>}/>
             <Route path="Complaints" element={<Complaints/>}/>
             <Route path="Attendance" element={<Attendance/>}/>
           </Route>

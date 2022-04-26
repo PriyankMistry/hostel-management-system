@@ -10,9 +10,6 @@ const LeaveForm = require('../model/leaveformSchema');
 const router = express.Router(); //for routing purposes
 
 
-router.get('/yo', async (req, res) =>{
-    res.send('y')
-})
 router.post('/login', async (req,res) =>{
 
     try{
@@ -44,6 +41,32 @@ router.post('/login', async (req,res) =>{
         console.log(err)
     }
 })
+
+
+router.get('/warden/leaveapplications', async (req,res) => {
+
+    const datas = [];
+
+        let leaveforms = await LeaveForm.find();
+      
+        //  leaveforms.map(async (leaveform) => {
+        //         const student =  await Student.findOne({email:leaveform.email})
+        //         const {name, block, rollno, room, course} = student;
+        //         datas.push({name, block, rollno, room, course,leaveform});
+        // })
+
+        for(var i=0;i<leaveforms.length;i++){
+            const student =  await Student.findOne({email:leaveforms[i].email})
+            const {name, block, rollno, room, course} = student;
+            datas.push({name, block, rollno, room, course,leaveform:leaveforms[i]});
+        }
+
+        console.log(datas)
+
+        return res.status(200).json(datas)
+         
+     })
+
 
 module.exports = router;
 

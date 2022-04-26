@@ -1,6 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
-export default function Leavereview() {
+const Leavereview = () => {
+
+  const {name} = useParams();
+  const {state}= useLocation();
+  const {block, rollno, room, course} = state
+  const {appdate, arrdate, arrtime, depdate, deptime, destination, email, reason, type} = state.leaveform
+  const {name: cname, relation, phone} = state.leaveform.cperson
+
   return (
     <div className="d-flex align-items-center light-blue-gradient" style={{height: "150vh"}}>
     <div className="container" >
@@ -12,71 +20,66 @@ export default function Leavereview() {
               <hr />
                 <div className="row">
                   <div className="col">
-                    <p><h5>Name :</h5>Prakhar Chaman</p>
+                    <p><h5>Name :</h5>{name}</p>
                   </div>
                   <div className="col">
-                    <p><h5>Course :</h5>Btech</p>
+                    <p><h5>Course :</h5>{course}</p>
                   </div>
                   <div className="col">
-                    <p><h5>Roll Number :</h5>19BCP094</p>
+                    <p><h5>Roll Number :</h5>{rollno}</p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col my-2">
-                    <p><h5>Application Date :</h5>25/04/2022</p>
+                    <p><h5>Application Date :</h5>{appdate}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Block :</h5>B2</p>
+                    <p><h5>Block :</h5>{block}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Room Number :</h5>613</p>
+                    <p><h5>Room Number :</h5>{room}</p>
                   </div>
                 </div>
                 <hr />
                 <p className="my-2"><h6>Dear Sir/Madam kindly allow me to take leave from the hostel from:</h6></p>
                 <div className="row">
                   <div className="col my-2 ">
-                    <p><h5>Depature Date :</h5>25/04/2022</p>
+                    <p><h5>Depature Date :</h5>{depdate}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Arival Date :</h5>28/04/2022</p>
+                    <p><h5>Arival Date :</h5>{arrdate}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Reason :</h5>Home Visit</p>
+                    <p><h5>Reason :</h5>{reason}</p>
                   </div>
                 </div>
                 <hr />
                 <p className="my-2"><h6>The details of my travel are as follows:</h6></p>
                 <div className="row">
                   <div className="col my-2">
-                    <p><h5>Going to :</h5>Ahmedabad</p>
+                    <p><h5>Going to :</h5>{destination}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Leaving on :</h5>1:08 PM</p>
+                    <p><h5>Leaving on :</h5>{deptime}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Back on :</h5>10:30 PM</p>
+                    <p><h5>Back on :</h5>{arrtime}</p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col my-2">
-                    <p><h5>Contact Person :</h5>Senior Jajoo</p>
+                    <p><h5>Contact Person :</h5>{cname}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Relation :</h5>Father</p>
+                    <p><h5>Relation :</h5>{relation}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Contact Number :</h5>9090909090</p>
+                    <p><h5>Contact Number :</h5>{phone}</p>
                   </div>
                 </div>
                 <hr/>
-                <p><h6>Further, during the period of my absense from PDEU campus, I take sole responsibility of myself.</h6></p>
-                <div className="col">
-                    <p style={{color: "#D22B2B"}}><h6>*I agree to abide by the rules</h6></p>
-                    <p>I agree to abide by the rules</p>
-                  </div>
                 <button type="submit" className="btn btn-primary my-3">Approve</button>              
-                <button type="submit" className="btn btn-primary my-3 mx-3">Decline</button>
+                <button type="submit" className="btn btn-danger my-3 mx-3">Decline</button>
             </div>
           </div>
         </div>
@@ -96,3 +99,5 @@ export default function Leavereview() {
 //   </div>
   )
 }
+
+export default Leavereview;
