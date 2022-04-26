@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../Components/Navbar/Header";
 import { FaUserGraduate } from "react-icons/fa";

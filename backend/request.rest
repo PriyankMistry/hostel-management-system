@@ -1,4 +1,7 @@
-GET http://localhost:5000/warden/leaveapplications
+POST http://localhost:5000/student
+Content-Type: application/json
+
+{"email":"preet@gmail.com"}
 
 ####
 

@@ -29,7 +29,7 @@ router.post('/login', async (req,res) =>{
         try{
             if(await bcrypt.compare(password, userLogin.password)){
                 console.log(userLogin)
-                res.status(201).json({role: userLogin.role})
+                res.status(201).json({role: userLogin.role,userEmail:userLogin.email})
             }
             else{
                 res.json({error: 'Enter correct credentials!'})
@@ -76,6 +76,7 @@ router.post('/warden/leaveapplications/update', async(req,res) => {
 
 
 })
+
 
 
 module.exports = router;

@@ -38,7 +38,9 @@ const Header = (props) => {
 
     const LogoutClickHandler = () => {
         menuToggleHandler();
+        localStorage.clear();
         navigate("/");
+        window.location.reload();
     };
 
     return (
