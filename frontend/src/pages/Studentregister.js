@@ -1,4 +1,7 @@
 import {React, useState} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Studentregister = () => {
 
   const [name,setName] = useState('')
@@ -15,6 +18,18 @@ const Studentregister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const validFullname = new RegExp('^[0-9]*$')
+    if (validFullname.test(name)) {
+      toast.error("invalid Name")
+    }
+    const validCourse = new RegExp('^[0-9]*$')
+    if (validCourse.test(course)) {
+      toast.error("invalid Course name")
+    }
+    const validQuota = new RegExp('^[0-9]*$')
+    if (validQuota.test(quota)) {
+      toast.error("invalid Quota")
+    }
 
     const i = await fetch('http://localhost:5000/admin/student',
     {
@@ -35,6 +50,7 @@ const Studentregister = () => {
 
   return (
     <div className="d-flex align-items-center light-blue-gradient" style={{height: "50em"}}>
+    <ToastContainer/>
     <div className="container" >
       <div className="d-flex justify-content-center">
         <div className="col-md-25">
@@ -47,11 +63,11 @@ const Studentregister = () => {
                 <div className="row">
                   <div className="col">
                     <label for="exampleInputEmail1">Full Name: </label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" onChange={e => setName(e.target.value)}/>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" value={name} onChange={e => setName(e.target.value)}/>
                   </div>
                   <div className="col">
                     <label for="exampleInputEmail1"> Contact Number: </label>
-                    <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number" onChange={e => setPhone(e.target.value)} />
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number" onChange={e => setPhone(e.target.value)} />
                   </div>
                 </div>
                 <div className="row">
@@ -95,7 +111,7 @@ const Studentregister = () => {
                     <label for="exampleInputEmail1">Confirm Password: </label>
                     <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Please confirm password" onChange={e => setCpassword(e.target.value)}/>
                 </div>               
-                <button type="submit" onClick={handleSubmit} class="btn btn-primary my-3">Submit</button>
+                <button type="submit" class="btn btn-primary my-3">Submit</button>
               </form>
             </div>
           </div>

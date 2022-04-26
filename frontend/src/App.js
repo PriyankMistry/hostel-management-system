@@ -12,6 +12,7 @@ import Warden from './pages/Warden';
 import Leaveapplications from './pages/Leaveapplications';
 import Leavereview from './pages/Leavereview';
 import Welcomewarden from './pages/Welcomewarden';
+import Welcomeadmin from './pages/Welcomeadmin';
 
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="Attendance" element={<Attendance/>}/>
           </Route>
           <Route exact path="admin" element={<Admin/>}>
+            <Route path="" element={< Welcomeadmin/>}/>
             <Route path="studentregister" element={<Studentregister/>}/>
             <Route path="wardenregister" element={<Wardenregister/>}/>
           </Route>

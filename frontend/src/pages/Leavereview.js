@@ -1,5 +1,9 @@
 import React from 'react';
 import { useParams, useLocation, useNavigate} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const approve = () => toast("Approved!");
 
 const Leavereview = () => {
 
@@ -24,12 +28,17 @@ const Leavereview = () => {
         status
       }),
     }); //end of fetch
+
+    setTimeout(() => {
+
+      navigate('/warden/leaveapplications')
+    }, 2000)
     
-    navigate('/warden/leaveapplications')
   }
 
   return (
     <div className="d-flex align-items-center light-blue-gradient" style={{height: "60em"}}>
+    <ToastContainer />
     <div className="container" >
       <div className="d-flex justify-content-center">
         <div className="col-md-25">
@@ -97,7 +106,7 @@ const Leavereview = () => {
                   </div>
                 </div>
                 <hr/>
-                <button type="submit" onClick={() => handleOnclick("Approved")} className="btn btn-primary my-3">Approve</button>              
+                <button type="submit" onClick={() => { approve(); handleOnclick("Approved");}} className="btn btn-primary my-3">Approve</button>              
                 <button type="submit" onClick={() => handleOnclick("Declined")} className="btn btn-danger my-3 mx-3">Decline</button>
             </div>
           </div>

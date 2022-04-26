@@ -1,4 +1,6 @@
 import {React, useState} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Wardenregister = () => {
@@ -14,6 +16,10 @@ const Wardenregister = () => {
   const handleSubmit = async (e) =>{
 
     e.preventDefault()
+    const validFullname = new RegExp('^[0-9]*$')
+    if (validFullname.test(name)) {
+      toast.error("invalid Name")
+    }
 
     const i = await fetch('http://localhost:5000/admin/warden',
     {
@@ -34,6 +40,7 @@ const Wardenregister = () => {
 
   return (
     <div className="d-flex align-items-center light-blue-gradient" style={{height: "38em"}}>
+    <ToastContainer/>
     <div className="container" >
       <div className="d-flex justify-content-center">
         <div className="col-md-25">
@@ -50,7 +57,7 @@ const Wardenregister = () => {
                   </div>
                   <div className="col">
                     <label for="exampleInputEmail1"> Contact Number: </label>
-                    <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number" onChange={e => setPhone(e.target.value)} />
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number" onChange={e => setPhone(e.target.value)} />
                   </div>
                 </div>
                 <div className="row">

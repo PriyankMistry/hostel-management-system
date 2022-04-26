@@ -9,7 +9,7 @@ export default function Warden() {
     <Header 
     Headertitle="Warden"
     Headericon={<FaUserTie/>}
-    titlelink="/warden/leaveapplications"
+    titlelink="/warden"
     content1="Leave Applications"
     content1link="/warden/leaveapplications"
     content2="Complaints"

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../Assets/Styles/LeaveForm.css";
 import "../Assets/Styles/NavPages.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LeaveForm = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +21,22 @@ const LeaveForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // setFormErrors(validate(values))
+    const validReason = new RegExp('^[0-9]*$')
+    if (validReason.test(reason)) {
+      toast.error("invalid reason")
+    }
+    const validGoingto = new RegExp('^[0-9]*$')
+    if (validGoingto.test(destination)) {
+      toast.error("invalid destination")
+    }
+    const validContactperson = new RegExp('^[0-9]*$')
+    if (validContactperson.test(cpersonName)) {
+      toast.error("invalid Contact Person")
+    }
+    const validRelation = new RegExp('^[0-9]*$')
+    if (validRelation.test(cpersonRelation)) {
+      toast.error("invalid Person Relation")
+    }
     const i = await fetch("http://localhost:5000/student/leaveform", {
       method: "POST",
       headers: {
@@ -55,6 +73,7 @@ const LeaveForm = () => {
       className="d-flex align-items-center light-blue-gradient"
       style={{ height: "50em" }}
     >
+      <ToastContainer />
       <div className="container">
         <div className="d-flex justify-content-center">
           <div className="col-md-25">
@@ -216,7 +235,7 @@ const LeaveForm = () => {
                     <div className="col my-2">
                       <label htmlFor="cpersonPhone">Contact Number: </label>
                       <input
-                        type="tel"
+                        type="number"
                         className="form-control"
                         id="cpersonPhone"
                         aria-describedby="cpersonPhone"
