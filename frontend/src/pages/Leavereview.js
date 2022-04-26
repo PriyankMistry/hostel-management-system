@@ -1,13 +1,32 @@
 import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate} from 'react-router-dom';
 
 const Leavereview = () => {
+
+  const navigate = useNavigate();
 
   const {name} = useParams();
   const {state}= useLocation();
   const {block, rollno, room, course} = state
-  const {appdate, arrdate, arrtime, depdate, deptime, destination, email, reason, type} = state.leaveform
+  const {_id,appdate, arrdate, arrtime, depdate, deptime, destination, reason} = state.leaveform
   const {name: cname, relation, phone} = state.leaveform.cperson
+
+
+  const handleOnclick = async(status) =>{
+    const i = await fetch("http://localhost:5000/warden/leaveapplications/update", 
+    {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body: JSON.stringify({
+        _id,
+        status
+      }),
+    }); //end of fetch
+    
+    navigate('/warden/leaveapplications')
+  }
 
   return (
     <div className="d-flex align-items-center light-blue-gradient" style={{height: "150vh"}}>
@@ -78,8 +97,8 @@ const Leavereview = () => {
                   </div>
                 </div>
                 <hr/>
-                <button type="submit" className="btn btn-primary my-3">Approve</button>              
-                <button type="submit" className="btn btn-danger my-3 mx-3">Decline</button>
+                <button type="submit" onClick={() => handleOnclick("Approved")} className="btn btn-primary my-3">Approve</button>              
+                <button type="submit" onClick={() => handleOnclick("Declined")} className="btn btn-danger my-3 mx-3">Decline</button>
             </div>
           </div>
         </div>
@@ -87,16 +106,6 @@ const Leavereview = () => {
     </div>
   </div>
 
-//     <div className="card text-center" style={{width:"50rem"}}>
-//     <div className="card-header">
-//       <h4>Leave Review</h4>
-//     </div>
-//     <div className="card-body">
-//       <h5 className="card-title">Special title treatment</h5>
-//       <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-//       <a href="#" className="btn btn-primary">Go somewhere</a>
-//     </div>
-//   </div>
   )
 }
 

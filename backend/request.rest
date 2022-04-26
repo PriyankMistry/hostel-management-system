@@ -2,6 +2,13 @@ GET http://localhost:5000/warden/leaveapplications
 
 ####
 
+POST http://localhost:5000/warden/leaveapplications/update
+Content-Type: application/json
+
+{"_id":"6267b58e9bbdf70e140d6f69", "status":"declined"}
+
+####
+
 POST http://localhost:5000/admin/student
 Content-Type: application/json
 
