@@ -40,6 +40,7 @@ const Header = (props) => {
         menuToggleHandler();
         localStorage.clear();
         navigate("/");
+        window.location.reload();
     };
 
     return (
