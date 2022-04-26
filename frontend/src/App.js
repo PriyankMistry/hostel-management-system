@@ -11,6 +11,7 @@ import Wardenregister from './pages/Wardenregister';
 import Warden from './pages/Warden';
 import Leaveapplications from './pages/Leaveapplications';
 import Leavereview from './pages/Leavereview';
+import Welcomewarden from './pages/Welcomewarden';
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="attendance" element={<Attendance/>}/>
           </Route>
           <Route exact path="warden/" element={<Warden/>}>
+            <Route path="" element={<Welcomewarden/>}/>
             <Route path="leaveapplications" element={<Leaveapplications/>}/>
             <Route path="leaveapplications/:name" element={<Leavereview/>}/>
             <Route path="Complaints" element={<Complaints/>}/>

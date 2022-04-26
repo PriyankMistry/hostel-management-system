@@ -63,10 +63,10 @@ export default function Login() {
                                      <h3 className="display-6 mb-5 mt-5" style={fontstyle}>Highrise Hostel Sign in</h3>
                                      <form>
                                          <div className="mb-3">
-                                             <input id="inputEmail" type="email" placeholder="Email address" autofocus="" className="form-control border-0 shadow-sm px-4" value={email} onChange={e => setEmail(e.target.value)} required={true} />
+                                             <input id="inputEmail" type="email" placeholder="Email address" autofocus="" className="form-control border-0 shadow-sm px-4"  onChange={e => setEmail(e.target.value)} value={email} required={true} />
                                          </div>
                                          <div className="mb-3">
-                                             <input id="inputPassword" type="password" placeholder="Password"  className="form-control border-0 shadow-sm px-4 text-primary" value={password} onChange={e => setPassword(e.target.value)} required={true} />
+                                             <input id="inputPassword" type="password" placeholder="Password"  className="form-control border-0 shadow-sm px-4 text-primary"  onChange={e => setPassword(e.target.value)} value={password} required={true} />
                                          </div>
                                          <div className="d-grid gap-2 mt-2">
                                          <button type="submit" className="btn btn-primary btn-block text-uppercase mb-2 shadow-sm"  onClick={onLogin}>Sign in</button>

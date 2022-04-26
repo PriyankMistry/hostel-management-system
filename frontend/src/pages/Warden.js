@@ -16,8 +16,9 @@ export default function Warden() {
     content2link="/warden/complaints"
     content3="Attendance"
     content3link="/warden/attendance"
-    />
-    <Outlet/> 
+    /> 
+
+    <Outlet/>
     {/* whatever the nested url is, Outlet allows it to render along with the parent component */}
    </>
   )

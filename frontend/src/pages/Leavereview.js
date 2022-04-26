@@ -10,7 +10,7 @@ const Leavereview = () => {
   const {name: cname, relation, phone} = state.leaveform.cperson
 
   return (
-    <div className="d-flex align-items-center light-blue-gradient" style={{height: "150vh"}}>
+    <div className="d-flex align-items-center light-blue-gradient" style={{height: "60em"}}>
     <div className="container" >
       <div className="d-flex justify-content-center">
         <div className="col-md-25">
@@ -74,7 +74,7 @@ const Leavereview = () => {
                     <p><h5>Relation :</h5>{relation}</p>
                   </div>
                   <div className="col my-2">
-                    <p><h5>Contact Number :</h5>{phone}</p>
+                    <p><h5>Contact Num :</h5>{phone}</p>
                   </div>
                 </div>
                 <hr/>
@@ -87,16 +87,6 @@ const Leavereview = () => {
     </div>
   </div>
 
-//     <div className="card text-center" style={{width:"50rem"}}>
-//     <div className="card-header">
-//       <h4>Leave Review</h4>
-//     </div>
-//     <div className="card-body">
-//       <h5 className="card-title">Special title treatment</h5>
-//       <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-//       <a href="#" className="btn btn-primary">Go somewhere</a>
-//     </div>
-//   </div>
   )
 }
 
