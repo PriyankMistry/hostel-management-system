@@ -58,6 +58,11 @@ const leaveformSchema = mongoose.Schema({
             }
 
         },
+    status: {
+        type:String,
+        default:"Pending"
+    },
+
     type: {
         type:String,
         required:true

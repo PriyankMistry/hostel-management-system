@@ -61,11 +61,21 @@ router.get('/warden/leaveapplications', async (req,res) => {
             datas.push({name, block, rollno, room, course,leaveform:leaveforms[i]});
         }
 
-        console.log(datas)
-
         return res.status(200).json(datas)
          
      })
+
+
+
+
+router.post('/warden/leaveapplications/update', async(req,res) => {
+    const doc = await LeaveForm.findOneAndUpdate({_id:req.body._id},
+    {status:req.body.status},{new: true})
+
+    res.status(201).send(doc)
+
+
+})
 
 
 module.exports = router;
