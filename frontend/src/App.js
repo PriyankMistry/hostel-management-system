@@ -54,6 +54,7 @@ export default function App() {
         ( 
           <>
             <Route path="admin" element={<Admin/>}>
+              <Route path='' element={<Welcomeadmin/>}/>
               <Route path="studentregister" element={<Studentregister/>}/>
               <Route path="wardenregister" element={<Wardenregister/>}/>
             </Route>

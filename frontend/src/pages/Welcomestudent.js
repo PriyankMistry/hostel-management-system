@@ -41,7 +41,7 @@ const Yo = () =>{
         </div>
         <div className="card-body">
             <h6 className="card-title">Application Date : {leaveform.appdate}</h6>
-            <h6>{leaveform.status}</h6>
+            <h6 style={{color: leaveform.status === "Approved" ? "#00ab66" : leaveform.status === "Pending" ? null :  "#d11a2a"}}>{leaveform.status}</h6>
         </div>
         </div>
     </div>
