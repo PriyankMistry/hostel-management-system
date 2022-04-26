@@ -6,6 +6,12 @@ const Warden = require('../model/wardenSchema');
 const Admin = require('../model/adminSchema');
 const LeaveForm = require('../model/leaveformSchema');
 
+
+router.post('/', async(req, res) =>{
+    const leaveforms = await LeaveForm.find({email:req.body.email})
+    res.status(201).send(leaveforms)
+})
+
 router.post('/leaveform', async (req,res) => {
 
     let type=''
@@ -21,8 +27,6 @@ router.post('/leaveform', async (req,res) => {
 
     let d1 = new Date(arrdate) // new Date() constructor return object having all info of the date
     let d2 = new Date(depdate)
-
-    console.log(d1, arrdate)
 
     let timediff= Math.abs(d1.getTime() - d2.getTime()); //getTime() returns no of milliseconds since january 1, 1970
     let daydiff = Math.ceil(timediff/(24*60*60*1000))
