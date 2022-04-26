@@ -34,10 +34,12 @@ export default function Leaveapplications() {
           <div className="card-body">
               <h6 className="card-title">Name : {user.name}</h6>
               <h6 className="card-title">Application Date : {user.leaveform.appdate}</h6>
-              {(user.leaveform.status=="Approved") ? (null):(
-                <button type="submit" onClick={()=>navigate(`/warden/leaveapplications/${user.name}`,{state:user})} className="btn btn-primary my-3">Review</button> 
-                )     
-                }                 
+              <h6>{user.leaveform.status}</h6>
+
+            {(user.leaveform.status == "Approved") ? (null) : (
+              <button type="submit" onClick={() => navigate(`/warden/leaveapplications/${user.name}`, { state: user })} className="btn btn-primary my-3">Review</button>
+            )
+            }
           </div>
           </div>
       </div>
@@ -50,7 +52,6 @@ export default function Leaveapplications() {
         <div className='row row-cols-1 row-cols-md-4 my-3 mx-3'>
           <Yo/>
         </div>
-            
     )
   
 }
