@@ -1,9 +1,12 @@
 import {React, useState} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from 'react-router-dom'
 
 
 const Wardenregister = () => {
+
+  const navigate = useNavigate();
 
   
   const [name,setName] = useState('')
@@ -16,10 +19,11 @@ const Wardenregister = () => {
   const handleSubmit = async (e) =>{
 
     e.preventDefault()
-    const validFullname = new RegExp('^[0-9]*$')
-    if (validFullname.test(name)) {
-      toast.error("invalid Name")
-    }
+    let flag = []
+    const valid = new RegExp('^[0-9]*$')
+    valid.test(name) ? toast.error("Invalid name!") : flag.push(1)
+    
+   if(flag.length == 1){
 
     const i = await fetch('http://localhost:5000/admin/warden',
     {
@@ -34,8 +38,10 @@ const Wardenregister = () => {
 
     if(i.status===201){
       alert("Registered!")
+      navigate('/admin')
     }
   }
+}
 
 
   return (

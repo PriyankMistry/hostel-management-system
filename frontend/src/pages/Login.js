@@ -2,6 +2,8 @@ import {React, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import '../Assets/Styles/Login.css'
 import pdeulogo from '../Assets/Images/pdeulogo.jpg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
@@ -33,7 +35,7 @@ export default function Login() {
         window.location.reload();
     }
     else{
-        alert(res.error)
+        toast.error("Invalid Credentials")
     }
 
     };
@@ -51,6 +53,7 @@ export default function Login() {
            }
   return (
     <div className="maincontainer">
+    <ToastContainer />
          <div className="container-fluid">
              <div className="row no-gutter">
                

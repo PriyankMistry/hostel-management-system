@@ -1,8 +1,11 @@
 import {React, useState} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from 'react-router-dom';
 
 const Studentregister = () => {
+
+  const navigate = useNavigate();
 
   const [name,setName] = useState('')
   const [phone,setPhone] = useState('')
@@ -18,19 +21,16 @@ const Studentregister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const validFullname = new RegExp('^[0-9]*$')
-    if (validFullname.test(name)) {
-      toast.error("invalid Name")
-    }
-    const validCourse = new RegExp('^[0-9]*$')
-    if (validCourse.test(course)) {
-      toast.error("invalid Course name")
-    }
-    const validQuota = new RegExp('^[0-9]*$')
-    if (validQuota.test(quota)) {
-      toast.error("invalid Quota")
-    }
 
+    let flag=[]
+
+    const valid = new RegExp('^[0-9]*$')
+    valid.test(name) ? toast.error("Invalid name!") : flag.push(1)
+    valid.test(course) ? toast.error("Invalid course name!") : flag.push(1)
+    valid.test(quota) ? toast.error("Invalid quota!") : flag.push(1)
+
+    if(flag.length==3){
+    
     const i = await fetch('http://localhost:5000/admin/student',
     {
       method:'POST',
@@ -44,9 +44,11 @@ const Studentregister = () => {
 
     if(i.status===201){
       alert("Registered!")
+      navigate('/admin')
     }
   }
 
+}
 
   return (
     <div className="d-flex align-items-center light-blue-gradient" style={{height: "50em"}}>

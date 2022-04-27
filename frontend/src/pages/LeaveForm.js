@@ -3,8 +3,12 @@ import "../Assets/Styles/LeaveForm.css";
 import "../Assets/Styles/NavPages.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from 'react-router-dom'
 
 const LeaveForm = () => {
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [appdate, setAppdate] = useState("");
   const [depdate, setDepdate] = useState("");
@@ -55,6 +59,7 @@ const LeaveForm = () => {
 
     if (i.status === 201) {
       alert("Leave Form Submitted!");
+      navigate('/student')
     }
     else{
       toast.error(res.error);
