@@ -22,6 +22,7 @@ export default function App() {
   return (
     <>
       <Routes>
+
         {!localStorage.getItem('email') && 
         (<Route path="/" element={<Login/>}/>)} 
         

@@ -16,27 +16,21 @@ const LeaveForm = () => {
   const [cpersonName, setCpersonName] = useState("");
   const [cpersonRelation, setCpersonRelation] = useState("");
   const [cpersonPhone, setCpersonPhone] = useState("");
-  const [formErrors, setFormErrors] = useState({});
+  const [statement, setStatement] = useState("");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setFormErrors(validate(values))
-    const validReason = new RegExp('^[0-9]*$')
-    if (validReason.test(reason)) {
-      toast.error("invalid reason")
-    }
-    const validGoingto = new RegExp('^[0-9]*$')
-    if (validGoingto.test(destination)) {
-      toast.error("invalid destination")
-    }
-    const validContactperson = new RegExp('^[0-9]*$')
-    if (validContactperson.test(cpersonName)) {
-      toast.error("invalid Contact Person")
-    }
-    const validRelation = new RegExp('^[0-9]*$')
-    if (validRelation.test(cpersonRelation)) {
-      toast.error("invalid Person Relation")
-    }
+    let flag = []
+    // setFormErrors(validate(values)) 
+    const valid = new RegExp('^[0-9]*$')
+    valid.test(reason) ? toast.error("Invalid reason!") : flag.push(1)
+    valid.test(cpersonName) ? toast.error("Invalid reason!") : flag.push(1)
+    valid.test(cpersonRelation) ? toast.error("Invalid reason!") : flag.push(1)
+    statement!='I agree to abide by the rules' ? toast.error("match the statement") : flag.push(1)
+
+    if(flag.length==4){
+      try{
     const i = await fetch("http://localhost:5000/student/leaveform", {
       method: "POST",
       headers: {
@@ -57,10 +51,20 @@ const LeaveForm = () => {
       }),
     });
 
+    const res = await i.json()
+
     if (i.status === 201) {
       alert("Leave Form Submitted!");
     }
+    else{
+      toast.error(res.error);
+
+    }
+  }catch(err){
+    console.log(err)
+  }
   };
+}
   // const validate = (values) => {
   //   const errors= {};
   //   const regex = /^[a-zA-Z0-9.! #$%&'*+/=? ^_`{|}~-]+@[a-zA-Z0-9-]+(?:\. [a-zA-Z0-9-]+)*$/;
@@ -258,6 +262,7 @@ const LeaveForm = () => {
                       <h6>*I agree to abide by the rules</h6>
                     </p>
                     <input
+                      onChange={(e)=>setStatement(e.target.value)}
                       required="true"
                       type="text"
                       className="form-control"
