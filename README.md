@@ -26,8 +26,8 @@ There are 3 roles,
 3. There is also a feature for the admin to register a new student and a new warden if required.
 4. Authorisation is maintained using protected routes. 
 
-InProgress:
-1. Add Complaints, attendance feature for both warden, and student.
+### InProgress
+- Add Complaints, attendance feature for both warden, and student.
 
 
 ### Screenshots
